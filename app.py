@@ -4,16 +4,15 @@ import streamlit as st
 
 df = pd.read_csv('vehicles_us.csv')
 
-st.header('Análisis de datos de vehículos')
+
+histograma_seleccionado = st.checkbox('Histograma de precios')
+dispersion_seleccionado = st.checkbox('Gráfico de dispersión de precio vs año de modelo')
 
 
-if st.button('Construir histograma'):
-    fig = px.histogram(df, x='price')
-    st.write('Histograma de precios de vehículos')
-    st.plotly_chart(fig)
+if histograma_seleccionado:
+    fig = px.histogram(df, x='price', title='Distribución de Precios de Vehículos')
+    st.plotly_chart(fig, use_container_width=True)
 
-
-if st.button('Construir gráfico de dispersión'):
-    fig = px.scatter(df, x='model_year', y='price')
-    st.write('Gráfico de dispersión de precios de vehículos vs. año')
-    st.plotly_chart(fig)
+if dispersion_seleccionado:
+    fig = px.scatter(df, x='model_year', y='price', title='Relación entre Precio y Año de Modelo')
+    st.plotly_chart(fig, use_container_width=True)

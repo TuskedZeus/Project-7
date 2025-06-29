@@ -14,6 +14,6 @@ if st.button('Construir histograma'):
 
 
 if st.button('Construir gráfico de dispersión'):
-    fig = px.scatter(df, x='year', y='price')
+    fig = px.scatter(df, x='model_year', y='price')
     st.write('Gráfico de dispersión de precios de vehículos vs. año')
     st.plotly_chart(fig)
